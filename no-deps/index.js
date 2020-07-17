@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+// Parse CLI options
 
 const isString = value => typeof value === 'string'
 const isArray = value => Array.isArray(value)
