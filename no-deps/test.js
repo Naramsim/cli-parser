@@ -41,3 +41,7 @@ assert.deepEqual(
     parser.parse('--asd miao --asd bau --qwe poi --qwe ipo'),
     {asd: ['miao', 'bau'], qwe: ['poi', 'ipo']}
 )
+assert.deepEqual(
+    parser.parse('--asd 1 --asd 2 --qwe 3 --qwe 4'),
+    {asd: [1, 2], qwe: [3, 4]}
+)
