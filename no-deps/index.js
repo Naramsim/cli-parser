@@ -19,6 +19,8 @@ const isAndGetArgument = string => {
     return false
 }
 
+// Add a value at the position `key` inside `store`
+// They type of this value can change based on what was previously there.
 const addArgumentToFlag = (store, key, value) => {
     if (isArray(store[key])) {  
         store[key].push(value)
@@ -40,9 +42,10 @@ function parse(cliOptsString='') {
     const store = {}
     cliOptsString = sanitize(cliOptsString)
     const tokens = tokenize(cliOptsString)
+    //Loop over the entire tokens, ingesting and popping them from the array `tokens` with methods such as:
+    // .shift() https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift
     while (tokens.length >= 1) {
-        currentToken = tokens.shift()
-        nextToken = tokens[0] // TODO: decide whether to use it
+        currentToken = tokens.shift() // `.shift()` removes the first element of an array so that `tokens[0]` is the item following `currentToken`
         flag = isAndGetFlag(currentToken)
         if (flag && (tokens.length <= 0 || isAndGetFlag(tokens[0]))) {
             store[flag] = true
