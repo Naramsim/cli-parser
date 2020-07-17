@@ -1,4 +1,4 @@
-# cli-parser
+# cli-parser ![Node.js CI](https://github.com/Naramsim/cli-parser/workflows/Node.js%20CI/badge.svg)
 
 > https://github.com/wonderflow-bv/cli-args-parser-kata
 
