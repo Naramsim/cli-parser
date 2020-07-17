@@ -1,0 +1,21 @@
+{
+  "name": "no-deps",
+  "version": "1.0.0",
+  "description": "",
+  "bin": {
+		"file-type": "cli.js"
+	},
+	"engines": {
+		"node": ">=10"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+	],
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "",
+  "license": "MPL-2.0"
+}
