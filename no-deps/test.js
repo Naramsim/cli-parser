@@ -27,6 +27,10 @@ assert.deepEqual(
     parser.parse('--asd miao --qwe poi'),
     {asd: 'miao', qwe: 'poi'}
 )
+assert.deepEqual(
+    parser.parse('--asd 1'),
+    {asd: 1}
+)
 
 // Same flag with multiple arguments
 assert.deepEqual(
