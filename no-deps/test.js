@@ -9,6 +9,14 @@ assert.throws(
     () => { parser.parse({flag1: true}) },
     { name: 'TypeError' }
 )
+assert.deepEqual(
+    parser.parse(''),
+    {}
+)
+assert.deepEqual(
+    parser.parse(),
+    {}
+)
 
 // Flags only
 assert.deepEqual(
@@ -42,6 +50,10 @@ assert.deepEqual(
 assert.deepEqual(
     parser.parse('--flag1 arg1 --flag1 arg2'),
     {flag1: ['arg1', 'arg2']}
+)
+assert.deepEqual(
+    parser.parse('--flag1 arg1 --flag1 arg2 --flag1 arg3'),
+    {flag1: ['arg1', 'arg2', 'arg3']}
 )
 assert.deepEqual(
     parser.parse('--flag1 arg1 --flag1 arg2 --flag2 arg3 --flag2 arg4'),
