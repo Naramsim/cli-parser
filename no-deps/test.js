@@ -45,3 +45,25 @@ assert.deepEqual(
     parser.parse('--asd 1 --asd 2 --qwe 3 --qwe 4'),
     {asd: [1, 2], qwe: [3, 4]}
 )
+
+// https://github.com/wonderflow-bv/cli-args-parser-kata README tests
+assert.deepEqual(
+    parser.parse('--foo'),
+    {"foo": true}
+)
+assert.deepEqual(
+    parser.parse('--foo bar'),
+    {"foo": "bar"}
+)
+assert.deepEqual(
+    parser.parse('--number 1'),
+    {"number": 1}
+)
+assert.deepEqual(
+    parser.parse('--foo --bar baz --number 1'),
+    {"bar": "baz", "foo": true, "number": 1}
+)
+assert.deepEqual(
+    parser.parse('--foo --bar baz --bar zab --number 1'),
+    {"bar": ["baz", "zab"], "foo": true, "number": 1}
+)
