@@ -5,6 +5,11 @@ const parser = require('.')
 // Quick test
 // console.log(parser.parse('--flag1 --flag1 arg1 --flag1'))
 
+assert.throws(
+    () => { parser.parse({flag1: true}) },
+    { name: 'TypeError' }
+)
+
 // Flags only
 assert.deepEqual(
     parser.parse('--flag1'),
