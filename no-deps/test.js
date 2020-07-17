@@ -2,7 +2,8 @@ const assert = require('assert')
 
 const parser = require('.')
 
-//console.log(parser.parse('--asd --'))
+// Quick test
+// console.log(parser.parse('--flag1 --flag1 arg1 --flag1'))
 
 // Flags only
 assert.deepEqual(
@@ -66,4 +67,10 @@ assert.deepEqual(
 assert.deepEqual(
     parser.parse('--foo --bar baz --bar zab --number 1'),
     {"bar": ["baz", "zab"], "foo": true, "number": 1}
+)
+
+// Overrides
+assert.deepEqual(
+    parser.parse('--flag1 --flag1 arg1 --flag1'),
+    {"flag1": true }
 )
