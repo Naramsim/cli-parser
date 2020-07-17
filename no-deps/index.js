@@ -30,15 +30,16 @@ const addArgumentToFlag = (store, key, value) => {
 }
 
 function parse(cliOptsString='') {
-    const store = {}
     if (cliOptsString === '') {
         return {}
     }
     if (!isString(cliOptsString)) {
-        throw new Error(`Expected a string, got \`${cliOptsString}\` (${typeof cliOptsString})`)
+        throw new TypeError(`Expected a string, got \`${cliOptsString}\` (${typeof cliOptsString})`)
     }
+    
+    const store = {}
     cliOptsString = sanitize(cliOptsString)
-    let tokens = tokenize(cliOptsString)
+    const tokens = tokenize(cliOptsString)
     while (tokens.length >= 1) {
         currentToken = tokens.shift()
         nextToken = tokens[0] // TODO: decide whether to use it
