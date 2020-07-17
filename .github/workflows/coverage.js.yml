@@ -30,4 +30,5 @@ jobs:
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        directory: no-deps
+        file: ./no-deps/coverage/lcov.info
+        flags: unittest
