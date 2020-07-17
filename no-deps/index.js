@@ -1,10 +1,13 @@
 #!/usr/bin/env node
 
 const isString = value => typeof value === 'string'
+const isArray = value => Array.isArray(value)
+const sanitize = string => string.trim()
+const tokenize = string => string.split(' ')
 
-const isAndGetFlag = value => {
-    if (value.startsWith('--') && value.length >= 3) {
-        return value.slice(2)
+const isAndGetFlag = string => {
+    if (string.startsWith('--') && string.length >= 3) {
+        return string.slice(2)
     }
     return false
 }
@@ -16,17 +19,12 @@ const isAndGetArgument = string => {
     return false
 }
 
-const sanitize = string => string.trim()
-
-const tokenize = string => string.split(' ')
-
 const addArgumentToFlag = (store, key, value) => {
-    if (Array.isArray(store[key])) {
+    if (isArray(store[key])) {  
         store[key].push(value)
     } else if (isString(store[key])) {
         store[key] = [store[key], value]
     } else {
-        // TODO: what if it was a boolean flag? 
         store[key] = value
     }
 }
