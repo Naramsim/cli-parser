@@ -6,44 +6,44 @@ const parser = require('.')
 
 // Flags only
 assert.deepEqual(
-    parser.parse('--asd'),
-    {asd: true}
+    parser.parse('--flag1'),
+    {flag1: true}
 )
 assert.deepEqual(
-    parser.parse(' --asd '),
-    {asd: true}
+    parser.parse(' --flag1 '),
+    {flag1: true}
 )
 assert.deepEqual(
-    parser.parse('--asd --qwe'),
-    {asd: true, qwe: true}
+    parser.parse('--flag1 --flag2'),
+    {flag1: true, flag2: true}
 )
 
 // Flags with single arguments
 assert.deepEqual(
-    parser.parse('--asd miao'),
-    {asd: 'miao'}
+    parser.parse('--flag1 arg1'),
+    {flag1: 'arg1'}
 )
 assert.deepEqual(
-    parser.parse('--asd miao --qwe poi'),
-    {asd: 'miao', qwe: 'poi'}
+    parser.parse('--flag1 arg1 --flag2 arg2'),
+    {flag1: 'arg1', flag2: 'arg2'}
 )
 assert.deepEqual(
-    parser.parse('--asd 1'),
-    {asd: 1}
+    parser.parse('--flag1 1'),
+    {flag1: 1}
 )
 
 // Same flag with multiple arguments
 assert.deepEqual(
-    parser.parse('--asd miao --asd bau'),
-    {asd: ['miao', 'bau']}
+    parser.parse('--flag1 arg1 --flag1 arg2'),
+    {flag1: ['arg1', 'arg2']}
 )
 assert.deepEqual(
-    parser.parse('--asd miao --asd bau --qwe poi --qwe ipo'),
-    {asd: ['miao', 'bau'], qwe: ['poi', 'ipo']}
+    parser.parse('--flag1 arg1 --flag1 arg2 --flag2 arg3 --flag2 arg4'),
+    {flag1: ['arg1', 'arg2'], flag2: ['arg3', 'arg4']}
 )
 assert.deepEqual(
-    parser.parse('--asd 1 --asd 2 --qwe 3 --qwe 4'),
-    {asd: [1, 2], qwe: [3, 4]}
+    parser.parse('--flag1 1 --flag1 2 --flag2 3 --flag2 4'),
+    {flag1: [1, 2], flag2: [3, 4]}
 )
 
 // https://github.com/wonderflow-bv/cli-args-parser-kata README tests
